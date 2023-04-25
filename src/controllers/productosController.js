@@ -4,7 +4,7 @@
 function indexp(req, res) {
     req.getConnection((err, conn) => {
       //conn.query('SELECT * FROM product', (err, pers) => {
-        conn.query('SELECT a.costo, a.unidad, a.id_producto, a.name, b.descripcion, a.precio FROM product a, artuculo b WHERE a.tipo_art=b.tipo_art', (err, pers) => {
+        conn.query('SELECT a.costo, a.unidad, a.id_producto, a.name, b.descripcion, a.precio FROM product a, articulo b WHERE a.tipo_art=b.tipo_art', (err, pers) => {
         if(err) {
           res.json(err);
         }
