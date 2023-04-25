@@ -1,0 +1,53 @@
+<!--Titulo del container-->
+<center><h1 class="py-3">Productos Registrados</h1></center>
+
+<!--color del fondo-->
+<body style="backgraund-color: #f2f2f2">
+  <!--boton para crear un nuevo producto-->
+    <center><a class="btn btn-outline-primary margin" href="/createprod" title="Anadir Producto" style="text-decoration:none;">Agregar Nuevo Producto</a></center>
+
+<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+  <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-12">
+
+    <!--creacion de cabla-->
+    <table class="table-fixed w-full">
+      <thead>
+        <!--color de la tabla-->
+        <tr class="bg-yellow-900 text-white">
+          <!--secciones en el encabezado de la tabla-->
+          <th class="w-20 py-4 px-4 ...">ID</th>
+          <th class="w-1/4 py-4 ...">Nombre</th>
+          <th class="w-25 ...">Tipo de Articulo</th>
+          <th class="w-20 py-4 px-2 ...">Precio</th>
+          <th class="w-20 py-4 px-2 ...">Costo</th>
+          <th class="w-20 py-4 px-2 ...">Unidad</th>
+          <th class="w-40 py-4 px-5 ...">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each pers}}
+        <tr>
+          <!--obtiene la informacion de la base de datos y la imprime en la tabla--->
+          <td class="py-3 px-6">{{id_producto}}</td>
+          <td class="p-3" >{{name}}</td>
+          <td class="p-3">{{descripcion}}</td>
+          <td class="p-3">{{precio}}</td>
+          <td class="p-3">{{costo}}</td>
+          <td class="p-3 ">{{unidad}}</td>
+          <td class="p-4 flex">
+            <!--boton para eliminar producto con metodo delete-->
+            <form action="/productos/delete" method="POST" class="mx-2">
+              <input type="hidden" value="{{id_producto}}" name="id">
+              <button class="bg-red-500 text-white px-3 py-1 rounded-sm" type="submit">
+                <i class="fas fa-trash"></i></button>
+            </form>
+            <!--boton editar producto-->
+            <a href="/productos/editprod/{{id_producto}}" class="bg-green-500 text-white px-3 py-1 rounded-sm">
+              <i class="fas fa-pen"></i></a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<!--se indica la version de HTML al navegador-->
+<!DOCTYPE html>
+<!--lenguaje que se esta trabajando (español)-->
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--titulo de la pagina web-->
+    <title>Editar Personal</title>
+    <!-- Tailwind CSS Link -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.1/tailwind.min.css">
+    <!-- Fontawesome Link -->
+    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+
+    <div class="block mx-auto my-12 p-8 bg-white w-1/3 border border-gray-200 rounded-lg
+    shadow-lg text-gray-800 rounded-3xl">
+
+        <div class="d-flex justify-content-center">
+        <img src="https://cdn.icon-icons.com/icons2/2483/PNG/512/user_icon_149851.png" alt="" style="height: 7rem;">
+        </div>
+        <!--titulo de el container-->
+        <h1 class="text-2xl font-bold text-center">Editar Personal</h1>
+
+        {{#each pers}}
+
+        <form action="" method="post" class="mt-4"> 
+            <!--Se valida toda la informacion previamente creada y guardada en la base de datos se pone en cuadros de texto para poder 
+            editar la informacion tiene que estar contestados los campos con la informacion del usuario-->
+            
+            <input type="text" name="name" placeholder="Nombre"
+            class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
+            bg-gray-300 focus:bg-white rounded-3xl" value="{{name}}" required>
+
+            <input type="text" name="ap_paterno" placeholder="Apellido Paterno"
+            class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
+            bg-gray-300 focus:bg-white rounded-3xl" value="{{ap_paterno}}" required>
+
+            <input type="text" name="ap_materno" placeholder="Apellido Materno"
+            class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
+            bg-gray-300 focus:bg-white rounded-3xl" value="{{ap_materno}}" required>
+
+            <input type="text" name="telefono" placeholder="Numero de Telefono" maxlength="10"
+            oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+            class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
+            bg-gray-300 focus:bg-white rounded-3xl" value="{{telefono}}" required>
+
+            <input type="date" name="fecha_n" placeholder="Fecha de Nacimiento"
+            class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
+            bg-gray-300 focus:bg-white rounded-3xl" value="{{fecha_n}}" required>
+
+            <input type="email" name="email" placeholder="Email" 
+            class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
+            bg-gray-300 focus:bg-white rounded-3xl" value="{{email}}" required>
+
+            <input type="password" name="password" placeholder="Contraseña" 
+            class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
+            bg-gray-300 focus:bg-white rounded-3xl" required>
+            <!--se guarda la informacion previamente editada -->
+            <button type="submit" class="rounded-md bg-yellow-800 w-full text-lg text-white 
+            font-semibold p-2 my-3 hover:bg-yellow-900 focus:bg-yellow-900">Guardar</button>
+        </form>
+
+        {{/each}}
+    
+    </div>
+
+</html>

@@ -1,0 +1,43 @@
+
+<!--texto en el centro del body-->
+<center><h1 class="py-3">Personal Registrado</h1></center>
+
+<body style="backgraund-color: #f2f2f2">
+    <center><a class="btn btn-outline-primary margin" href="/create" title="Anadir Personal" style="text-decoration:none;">Agregar Nuevo Personal</a></center>
+
+<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+  <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-12">
+
+<!--Tabla creada-->
+    <table class="table-fixed w-full">
+      <thead>
+        <!--informacion en el encabezado de la tabla -->
+        <tr class="bg-yellow-900 text-white">
+          <th class="w-20 py-4 px-4 ...">ID</th>
+          <th class="w-1/4 py-4 ...">Nombre</th>
+          <th class="w-1/2 py-4 px-5 ...">Email</th>
+          <th class="w-30 py-4 ...">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each pers}}
+        <tr>
+          <!--Se pone la informacion de la base de datos en la tabla-->
+          <td class="py-3 px-6">{{id_usuario}}</td>
+          <td class="p-3">{{name}}</td>
+          <td class="p-3 ">{{email}}</td>
+          <td class="p-3 flex">
+            <form action="/pers/delete" method="POST" class="mx-2">
+              <input type="hidden" value="{{id_usuario}}" name="id">
+              <button class="bg-red-500 text-white px-3 py-1 rounded-sm" type="submit">
+                <i class="fas fa-trash"></i></button>
+            </form>
+            <a href="/pers/edit/{{id_usuario}}" class="bg-green-500 text-white px-3 py-1 rounded-sm">
+              <i class="fas fa-pen"></i></a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
