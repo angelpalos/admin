@@ -22,7 +22,7 @@
 
         <div class="d-flex justify-content-center">
           <!--Imagen de icono de usuario-->
-        <img src="https://cdn.icon-icons.com/icons2/2483/PNG/512/user_icon_149851.png" alt="" style="height: 7rem;">
+        <!--<img src="https://cdn.icon-icons.com/icons2/2483/PNG/512/user_icon_149851.png" alt="" style="height: 7rem;">-->
         </div>
 
         <!--titulo en el container de crear nuevo personal-->
@@ -31,38 +31,45 @@
         <!--post sirve para introducir los parámetros en la solicitud HTTP para el servidor.(no quedan visibles para el usuario).-->
         <form action="" method="post" class="mt-4"> 
             <!--cuadro de texto para escribir el nombre del usuario-->
+            <label for="">Nombre</label>
             <input type="text" name="name" placeholder="Nombre"
             class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
             bg-gray-300 focus:bg-white rounded-3xl" required>
             <!--required sirve para que no se pueda enviar el formulaio sin contestar todos los campos-->
 
             <!--cuadro de texto para escribir el apellido paterno del usuario-->
+            <label for="">Apellido Paterno</label>
             <input type="text" name="ap_paterno" placeholder="Apellido Paterno"
             class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
             bg-gray-300 focus:bg-white rounded-3xl" required>
 
             <!--cuadro de texto para escribir el apellido materno del usuario-->
+            <label for="">Apellido Materno</label>
             <input type="text" name="ap_materno" placeholder="Apellido Materno"
             class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
             bg-gray-300 focus:bg-white rounded-3xl" required>
 
             <!--cuadro de texto para escribir el numero de telefono del usuario(no permite mas de 10 digitos ni letras)-->
+            <label for="">Telefono</label>
             <input type="text" name="telefono" placeholder="Numero de Telefono" maxlength="10"
             oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
             class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
             bg-gray-300 focus:bg-white rounded-3xl" required>
 
             <!--cuadro para escibir fecha de nacimiento del usuario(no se puede escibir letas por el tipo date)-->
+            <label for="">Fecha de Nacimiento</label>
             <input type="date" name="fecha_n" placeholder="Fecha de Nacimiento"
             class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
             bg-gray-300 focus:bg-white rounded-3xl" required>
 
             <!--cuadro de texto para escribir el email del usuario (no se puede contestar sin @)-->
+            <label for="">Correo Electronico</label>
             <input type="email" name="email" placeholder="Email" 
             class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
             bg-gray-300 focus:bg-white rounded-3xl" required>
 
             <!--cuadro de texto para escribir la contraseña del usuario(encriptada)-->
+            <label for="">Contraseña</label>
             <input type="password" name="password" placeholder="Contraseña" 
             class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
             bg-gray-300 focus:bg-white rounded-3xl" required>

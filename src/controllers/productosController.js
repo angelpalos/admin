@@ -3,8 +3,7 @@
 //Muestra los datos en una tabla
 function indexp(req, res) {
     req.getConnection((err, conn) => {
-      //conn.query('SELECT * FROM product', (err, pers) => {
-        conn.query('SELECT a.costo, a.unidad, a.id_producto, a.name, b.descripcion, a.precio FROM product a, articulo b WHERE a.tipo_art=b.tipo_art', (err, pers) => {
+      conn.query('SELECT a.costo, a.unidad, a.id_producto, a.name, b.descripcion, a.precio, c.description FROM product a, articulo b, units c WHERE a.tipo_art=b.tipo_art and a.unidad=c.unidad', (err, pers) => {
         if(err) {
           res.json(err);
         }
@@ -17,16 +16,23 @@ function indexp(req, res) {
 
 //Redirige a la pagina para crear un nuevo producto
   function create(req, res) {
-  
-    res.render('pages/createprod');
-  }
-  
+    req.getConnection((err, conn)=>{
+      conn.query('SELECT * FROM articulo', (err, pers)=>{
+        req.getConnection((err, conn)=>{
+          conn.query('SELECT * FROM units', (err, per)=>{
+            res.render('pages/createprod', { pers, per})
+        })
+      });
+    });
+  });
+} 
 //Inserta la informacion del formulario en la tabla de "product" (querie)
   function store(req, res) {
     const data=req.body;
     
             req.getConnection((err,conn) => {
                 conn.query('INSERT INTO product SET ?',[data], (err,rows) => {
+                  if(err) throw err;
                   res.redirect('/productos'); 
                 });
             });
@@ -49,14 +55,26 @@ function indexp(req, res) {
  //Al ejecitarlo te redirige a la pagina para editar el producto
   function edit(req, res) {
     const id_producto = req.params.id;
-    console.log(id_producto)
 
     req.getConnection((err, conn) => {
-     conn.query('SELECT * FROM product WHERE id_producto = ?', [id_producto], (err, pers) => {
+     conn.query('SELECT a.id_producto,a.tipo_art,a.name,a.precio,a.costo,a.unidad,b.descripcion, c.description FROM product a, articulo b, units c where a.id_producto=? and b.tipo_art = a.tipo_art and a.unidad=c.unidad', [id_producto], (err, pers) => {
         if(err) {
-          res.json(err);
+          console.log(err);
+        
+
+        
         }
-        res.render('pages/editprod', { pers });
+        req.getConnection((err, conn)=>{
+          conn.query('SELECT * FROM articulo', (err, art)=>{
+            req.getConnection((err, conn)=>{
+              conn.query('SELECT * FROM units', (err, uni)=>{
+                console.log(art)
+                res.render('pages/editprod', { pers, art, uni})
+              })
+            })
+          
+          });
+        });
       });
     });
   }
@@ -69,9 +87,7 @@ function indexp(req, res) {
   
     req.getConnection((err, conn) => {
       conn.query('UPDATE product SET ? WHERE id_producto = ?', [data, id_producto], (err, rows) => {
-        if(err) {
-            res.json(err);
-        }
+        if(err) throw err
         res.redirect('/productos');
       });
     });

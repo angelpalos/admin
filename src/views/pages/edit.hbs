@@ -19,7 +19,7 @@
     shadow-lg text-gray-800 rounded-3xl">
 
         <div class="d-flex justify-content-center">
-        <img src="https://cdn.icon-icons.com/icons2/2483/PNG/512/user_icon_149851.png" alt="" style="height: 7rem;">
+        <!--<img src="https://cdn.icon-icons.com/icons2/2483/PNG/512/user_icon_149851.png" alt="" style="height: 7rem;">-->
         </div>
         <!--titulo de el container-->
         <h1 class="text-2xl font-bold text-center">Editar Personal</h1>
@@ -30,31 +30,34 @@
             <!--Se valida toda la informacion previamente creada y guardada en la base de datos se pone en cuadros de texto para poder 
             editar la informacion tiene que estar contestados los campos con la informacion del usuario-->
             
+            <label for="">Nombre</label>
             <input type="text" name="name" placeholder="Nombre"
             class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
             bg-gray-300 focus:bg-white rounded-3xl" value="{{name}}" required>
 
+            <label for="">Apellido Paterno</label>
             <input type="text" name="ap_paterno" placeholder="Apellido Paterno"
             class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
             bg-gray-300 focus:bg-white rounded-3xl" value="{{ap_paterno}}" required>
 
+            <label for="">Apellido Materno</label>
             <input type="text" name="ap_materno" placeholder="Apellido Materno"
             class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
             bg-gray-300 focus:bg-white rounded-3xl" value="{{ap_materno}}" required>
 
+            <label for="">Numero de Telefono</label>
             <input type="text" name="telefono" placeholder="Numero de Telefono" maxlength="10"
             oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
             class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
             bg-gray-300 focus:bg-white rounded-3xl" value="{{telefono}}" required>
 
-            <input type="date" name="fecha_n" placeholder="Fecha de Nacimiento"
-            class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
-            bg-gray-300 focus:bg-white rounded-3xl" value="{{fecha_n}}" required>
 
+            <label for="">Correo Electronico</label>
             <input type="email" name="email" placeholder="Email" 
             class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
             bg-gray-300 focus:bg-white rounded-3xl" value="{{email}}" required>
 
+            <label for="">Contraseña</label>
             <input type="password" name="password" placeholder="Contraseña" 
             class="border border-gray-200 w-full text-lg placeholder-gray-500 p-2 my-2 
             bg-gray-300 focus:bg-white rounded-3xl" required>
