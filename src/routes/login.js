@@ -22,6 +22,8 @@ router.post('/create', persController.store);
 router.post('/pers/delete', persController.destroy);
 router.get('/pers/edit/:id', persController.edit);
 router.post('/pers/edit/:id', persController.update);
+router.post('/pers/buscar', persController.buscar);
+
 
 router.get('/productos', productosController.indexp);
 router.get('/createprod', productosController.create);
@@ -29,6 +31,7 @@ router.post('/createprod', productosController.store);
 router.post('/productos/delete', productosController.destroy);
 router.get('/productos/editprod/:id', productosController.edit);
 router.post('/productos/editprod/:id', productosController.update);
+router.post('/productos/productos/buscar', productosController.buscar);
 
 //Exporta las rutas 
 module.exports = router;

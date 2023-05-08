@@ -3,7 +3,7 @@
 //Muestra los datos en una tabla
 function indexp(req, res) {
     req.getConnection((err, conn) => {
-      conn.query('SELECT a.costo, a.unidad, a.id_producto, a.name, b.descripcion, a.precio, c.description FROM product a, articulo b, units c WHERE a.tipo_art=b.tipo_art and a.unidad=c.unidad', (err, pers) => {
+      conn.query('SELECT a.costo, a.unidad, a.id_producto, a.name, b.descripcion, a.precio, c.description FROM product a, articulo b, units c WHERE a.tipo_art=b.tipo_art and a.unidad=c.unidad ORDER BY `name` ASC', (err, pers) => {
         if(err) {
           res.json(err);
         }
@@ -92,6 +92,23 @@ function indexp(req, res) {
       });
     });
   }
+
+  function buscar(req, res){
+    const data = req.body;
+    const busc = '%'+ data.buscador + '%'
+    console.log(busc)
+    req.getConnection((err, conn)=>{
+      conn.query("SELECT a.costo, a.unidad, a.id_producto, a.name, b.descripcion, a.precio, c.description FROM product a, articulo b, units c WHERE a.tipo_art=b.tipo_art and a.unidad=c.unidad and a.name LIKE ? ORDER BY `name` ASC ", [busc], (err, pers) => {
+        console.log(data.buscador)
+        console.log(err)
+        console.log(pers)
+        res.render('pages/productos', {pers})
+        
+      });
+    });
+  }
+
+  
   
   
 //exporta las funciones 
@@ -102,4 +119,5 @@ function indexp(req, res) {
     destroy: destroy,
     edit: edit,
     update: update,
+    buscar,
   }

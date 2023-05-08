@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 //Muestra los datos en una tabla
 function index(req, res) {
     req.getConnection((err, conn) => {
-      conn.query('SELECT * FROM users', (err, pers) => {
+      conn.query('SELECT * FROM users ORDER BY `name` ASC', (err, pers) => {
         if(err) {
           res.json(err);
         }
@@ -102,6 +102,22 @@ function index(req, res) {
     });
    });
   }
+
+  function buscar(req, res){
+    const data = req.body;
+    const busc = '%'+ data.buscador + '%'
+    console.log(busc)
+    req.getConnection((err, conn)=>{
+      conn.query("SELECT * FROM users WHERE name LIKE ? ORDER BY `name` ASC ", [busc], (err, pers) => {
+        console.log(data.buscador)
+        console.log(err)
+        console.log(pers)
+        res.render('pages/personal', {pers})
+        
+      });
+    });
+  }
+
   
   
 //exporta las funciones 
@@ -112,4 +128,5 @@ function index(req, res) {
     destroy: destroy,
     edit: edit,
     update: update,
+    buscar,
   }

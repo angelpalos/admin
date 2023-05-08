@@ -5,6 +5,15 @@
 <body style="backgraund-color: #f2f2f2">
   <!--boton para crear un nuevo producto-->
     <center><a class="btn btn-outline-primary margin" href="/createprod" title="Anadir Producto" style="text-decoration:none;">Agregar Nuevo Producto</a></center>
+    <!--<input type="text" placeholder="Buscar..." class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-12 margin">-->
+
+    <form action="/productos/productos/buscar" method="post">
+      <input type="text" name="buscador" class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-4 px-3" style="text-decoration:none" placeholder="Buscar..." data-table="table_id" >
+      <input type="submit" value="Buscar">
+
+    </form>
+
+
 
 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
   <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-12">
@@ -16,7 +25,7 @@
         <tr class="bg-yellow-900 text-white">
           <!--secciones en el encabezado de la tabla-->
           <th class="w-20 py-4 px-4 ...">ID</th>
-          <th class="w-1/4 py-4 ...">Nombre</th>
+          <th class="w-1/4 py-4 ...">Descripcion</th>
           <th class="w-25 ...">Tipo de Articulo</th>
           <th class="w-20 py-4 px-2 ...">Precio</th>
           <th class="w-20 py-4 px-2 ...">Costo</th>
