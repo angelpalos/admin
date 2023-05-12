@@ -1,19 +1,40 @@
+<style>
+  input{
+    width: 43%;
+    height: 47px;
+    color: black;
+    background-color: rgb(103, 50, 11);
+
+
+  }.botonenviar{
+    border-radius: 15%;
+    color: white;
+    width: 5%;
+    height: 50px;
+
+
+  }.botonenviar:hover{
+    background-color:rgb(144, 71, 19) ;
+ 
+}
+</style>
+
+
 <!--Titulo del container-->
 <center><h1 class="py-3">Productos Registrados</h1></center>
 
 <!--color del fondo-->
 <body style="backgraund-color: #f2f2f2">
   <!--boton para crear un nuevo producto-->
-    <center><a class="btn btn-outline-primary margin" href="/createprod" title="Anadir Producto" style="text-decoration:none;">Agregar Nuevo Producto</a></center>
+    <center><a class="btn btn-outline-dark" href="/createprod" title="Anadir Producto" style="text-decoration:none;">Agregar Nuevo Producto</a></center>
     <!--<input type="text" placeholder="Buscar..." class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-12 margin">-->
 
-    <form action="/productos/productos/buscar" method="post">
-      <input type="text" name="buscador" class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-4 px-3" style="text-decoration:none" placeholder="Buscar..." data-table="table_id" >
-      <input type="submit" value="Buscar">
-
-    </form>
-
-
+  <center>
+  <form action="/productos/productos/buscar" method="post" id="buscador">
+     <input type="text" name="buscador" class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-12"  style="text-decoration:none" placeholder="Buscar..." data-table="table_id" >
+     <input type="submit" value="Buscar" id="botonenviar" class="botonenviar"  >
+  </form>
+  </center>
 
 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
   <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-12">

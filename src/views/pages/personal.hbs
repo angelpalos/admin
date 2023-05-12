@@ -1,15 +1,36 @@
+<style>
+  input{
+    width: 43%;
+    height: 47px;
+    color: black;
+    background-color: rgb(103, 50, 11);
 
+
+  }.botonenviar{
+    border-radius: 15%;
+    color: white;
+    width: 5%;
+    height: 50px;
+
+
+  }.botonenviar:hover{
+    background-color:rgb(144, 71, 19) ;
+ 
+}
+</style>
 <!--texto en el centro del body-->
 <center><h1 class="py-3">Personal Registrado</h1></center>
-
-<body style="backgraund-color: #f2f2f2">
-    <center><a class="btn btn-outline-primary margin" href="/create" title="Anadir Personal" style="text-decoration:none;">Agregar Nuevo Personal</a></center>
+<center>
+  <body style="backgraund-color: #f2f2f2">
+    <center><a class="btn btn-outline-dark" href="/create" title="Anadir Personal" style="text-decoration:none;">Agregar Nuevo Personal</a></center>
 
   <form action="/pers/buscar" method="post">
      <input type="text" name="buscador" class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-12" style="text-decoration:none" placeholder="Buscar..." data-table="table_id" >
-     <input type="submit" value="Buscar">
+     <input type="submit" value="Buscar" class="botonenviar"> 
 
   </form>
+
+</center>
 
 
 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

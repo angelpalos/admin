@@ -105,7 +105,7 @@ function index(req, res) {
 
   function buscar(req, res){
     const data = req.body;
-    const busc = '%'+ data.buscador + '%'
+    const busc =  data.buscador + '%'
     console.log(busc)
     req.getConnection((err, conn)=>{
       conn.query("SELECT * FROM users WHERE name LIKE ? ORDER BY `name` ASC ", [busc], (err, pers) => {
