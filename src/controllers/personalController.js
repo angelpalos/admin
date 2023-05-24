@@ -33,7 +33,7 @@ function index(req, res) {
       conn.query('SELECT * FROM users WHERE email= ?',[data.email], (err,userData) => {
         if (userData.length>0){
           res.render('pages/create', {error: 'El usuario ya existe!'});
-        } else {
+        } else if (userData.length<0){
           bcrypt.hash(data.password, 12).then(hash => {
             console.log(hash);
             data.password=hash;
