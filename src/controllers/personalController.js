@@ -31,8 +31,9 @@ function store(req, res) {
   const data=req.body;
   req.getConnection((err,conn) => {
     conn.query('SELECT * FROM users WHERE email= ?',[data.email], (err,userData) => {
-      if (userData.length>0){
+      if (userData.length>=1){
         res.render('pages/create', {error: 'El usuario ya existe!'});
+        
       } else if (userData.length<=0){
         bcrypt.hash(data.password, 12).then(hash => {
           console.log(hash);
