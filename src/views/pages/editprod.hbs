@@ -52,8 +52,9 @@
             bg-gray-300 focus:bg-white rounded-3xl">
               <option value="{{unidad}}">{{description}}</option>
               {{/each}}
-              {{#each uni}}
-              <option value="{{unidad}}">{{description}}</option>
+              <option disabled>Seleccione el tipo de articulo</option>
+              {{#each pers}}
+              <option value="{{tipo_art}}">{{descripcion}}</option>
               {{/each}}
             </select>
             <!--se guarda la informacion previamente editada del producto -->
